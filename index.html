@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFit AI - Assistente de Dieta e Treino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ NutriFit AI</h1>
+            <p>Seu Agente de Inteligência Artificial para Dieta e Treino</p>
+        </header>
+
+        <!-- Configuração da Chave de API -->
+        <section class="card" id="apiKeySection">
+            <h2>🔑 Chave da API do Gemini</h2>
+            <div class="form-group">
+                <input type="password" id="apiKeyInput" placeholder="Cole sua API Key do Google Gemini aqui..." />
+                <button type="button" id="btnSaveKey">Salvar Chave</button>
+            </div>
+            <small style="color: var(--text-muted)">A chave fica salva com segurança apenas no seu navegador (localStorage).</small>
+        </section>
+
+        <!-- Módulo 1: Perfil Biométrico e Genética -->
+        <section class="card">
+            <h2>1. Perfil Biométrico & Genética</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <input type="number" id="age" placeholder="Idade" required>
+                    <input type="number" id="weight" placeholder="Peso (kg)" step="0.1" required>
+                    <input type="number" id="height" placeholder="Altura (cm)" required>
+                </div>
+                <div class="form-group">
+                    <select id="biotype" required>
+                        <option value="" disabled selected>Selecione seu Biotipo (Genética)</option>
+                        <option value="Ectomorfo">Ectomorfo (Magro, metabolismo rápido)</option>
+                        <option value="Mesomorfo">Mesomorfo (Ganho muscular fácil, atlético)</option>
+                        <option value="Endomorfo">Endomorfo (Tendência a acumular gordura)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="goal" required>
+                        <option value="" disabled selected>Seu Objetivo Atual</option>
+                        <option value="Perda de Gordura">Perda de Gordura (Déficit Calórico)</option>
+                        <option value="Manutenção">Manutenção de Peso</option>
+                        <option value="Ganho de Massa">Ganho de Massa Muscular (Superávit)</option>
+                    </select>
+                </div>
+                <button type="submit" id="btnGeneratePlan">Gerar Diagnóstico & Plano IA</button>
+            </form>
+        </section>
+
+        <!-- Exibição do Plano Gerado pela IA -->
+        <section class="card" id="aiPlanCard" style="display: none;">
+            <h2>2. Diagnóstico Metabólico & Estratégia</h2>
+            <div id="aiPlanOutput" class="markdown-body"></div>
+        </section>
+
+        <!-- Módulo 3 & 4: Diário Alimentar com IA -->
+        <section class="card">
+            <h2>3. Diário de Refeições & Análise de Calorias</h2>
+            <form id="logFoodForm">
+                <input type="text" id="foodInput" placeholder="Ex: Comi 2 ovos mexidos, 2 fatias de pão integral e um café sem açúcar..." required>
+                <button type="submit">Registrar Refeição com IA</button>
+            </form>
+            <div id="logOutput" class="log-container"></div>
+        </section>
+    </div>
+
+    <!-- Importação do Marked.js para suporte a Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
